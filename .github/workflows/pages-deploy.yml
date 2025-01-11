@@ -1,6 +1,4 @@
-# name: "Build and Deploy"
-name: npm build
-run: npm install && npm run build
+name: "Build and Deploy"
 on:
   push:
     branches:
