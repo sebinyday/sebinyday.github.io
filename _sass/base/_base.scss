@@ -4,7 +4,7 @@
 @use '../abstracts/placeholders';
 @use '../themes/light';
 @use '../themes/dark';
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 :root {
   font-size: 16px;
 }
@@ -43,10 +43,13 @@ body {
     env(safe-area-inset-bottom) env(safe-area-inset-left);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
-  font-family: v.$font-family-base;
+  // font-family: v.$font-family-base;
+  font-family :"NotoSans", "Roboto";
 }
 
 h1.dynamic-title {
+  
+  font-weight: 900;
   @include bp.lt(bp.get(lg)) {
     display: none;
 

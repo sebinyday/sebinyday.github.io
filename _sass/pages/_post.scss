@@ -492,6 +492,7 @@ header {
 h2,
 h3,
 h4 {
+  font-weight: 700;
   @include bp.xl {
     scroll-margin-top: 2rem;
   }

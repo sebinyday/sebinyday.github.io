@@ -18,7 +18,7 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
   width: v.$sidebar-width;
   // background: var(--sidebar-bg);
   background: rgb(255,255,255);
-background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(232,166,194,1) 64%, rgba(238,98,135,0.8) 100%);  background-size: auto;
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(232,166,194,1) 64%, rgba(238,98,135,0.8) 100%);  background-size: auto;
   background-position: center;
   border-right: 1px solid var(--sidebar-border-color);
 
