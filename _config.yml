@@ -125,7 +125,7 @@ comments:
     repo_id: "R_kgDONpSbDQ"
     category: "Q&A"
     category_id: "DIC_kwDONpSbDc4Cl9jS"
-    mapping: "pathname"# optional, default to 'pathname'
+    mapping: "pathname" # optional, default to 'pathname'
     strict: "0" # optional, default to '0'
     input_position: "bottom" # optional, default to 'bottom'
     lang: "ko" # optional, default to the value of `site.lang`
