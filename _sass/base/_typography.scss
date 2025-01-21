@@ -84,10 +84,11 @@ blockquote {
     }
   }
 
-  @include mx.prompt('tip', '\f0eb', $fa-style: 'regular');
-  @include mx.prompt('info', '\f06a', $rotate: 180);
-  @include mx.prompt('warning', '\f06a');
+  @include mx.prompt('tip', '😯❗');
+  @include mx.prompt('info', '🧐❓');
+  @include mx.prompt('warning', '😡');
   @include mx.prompt('danger', '\f071');
+  @include mx.prompt('block', '✍️');
 }
 
 kbd {

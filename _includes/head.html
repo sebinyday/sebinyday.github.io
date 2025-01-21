@@ -96,7 +96,10 @@
     <!-- Image Popup -->
     <link rel="stylesheet" href="{{ site.data.origin[type].glightbox.css | relative_url }}">
   {% endif %}
-
+  <!-- math -->
+   {% if page.use_math %}
+    {% include mathjax_support.html %}
+  {% endif %}
   <!-- Scripts -->
 
   <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}"></script>
