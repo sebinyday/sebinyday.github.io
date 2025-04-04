@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+{% include lang.html %}
+
+<article class="px-1">
+
+  <div class="header" style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+    <img src="/assets/images/profile.png" alt="Profile Photo" style="border-radius: 10%; width: 150px;">
+    <div>
+      <h1 class="dynamic-title">Lee Sebin</h1>
+      <p>📧jnf0219@naver.com</p>
+      <p>📞010-2228-7903</p>
+    </div>
+  </div>
+
+  <section>
+    <h2>🧠 About Me</h2>
+    <p>
+        현재 숭실대학교 Reality Lab에서 연구 인턴으로 활동하고 있으며, 컴퓨터 비전, 딥러닝, 이미지 처리 및 3D 비전을 연구하고 있습니다. 연구 관심 분야는 3D 재구성(3D Reconstruction), 얼굴 복원(Face Restoration), 그리고 딥러닝 기반 비전 응용(Vision Applications)입니다.
+    </p>
+  </section>
+
+  <section>
+    <h2>🧪 Experience</h2>
+    <ul>
+      <li><strong>2023.07 ~ 현재</strong> — 숭실대학교 Reality Lab 학부연구생</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🎓 Education</h2>
+    <ul>
+      <li>숭실대학교 대학원 메타버스 문화콘텐츠학과 2027.03~2028.08</li>
+      <li>숭실대학교 글로벌미디어학부 2023.03~2026.02</li>
+      <li>숭실대학교 수학과 2022.03 - 2023.02</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>💼 Projects</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+      {% for project in site.projects %}
+        <a href="{{ project.url }}" style="flex: 1 1 calc(50% - 1rem); border: 1px solid #ddd; border-radius: 12px; padding: 1rem; text-decoration: none; color: inherit;">
+          <img src="{{ project.thumbnail }}" alt="{{ project.title }}" style="width: 100%; border-radius: 8px;">
+          <h3>{{ project.title }}</h3>
+          <p style="font-size: 0.9rem;">{{ project.description | truncate: 80 }}</p>
+          <p style="font-size: 0.8rem; color: #666;">{{ project.tags | join: ', ' }}</p>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+</article>

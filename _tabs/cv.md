@@ -1,6 +1,7 @@
 ---
-# the default layout is 'page'
+layout: cv
+title: CV
+permalink: /cv/
 icon: fa-solid fa-user
 order: 5
 ---
-cv를 차차 추가하자.
