@@ -6,6 +6,7 @@ tags:
   [
     3D Vision
   ]
+math: true
 ---
 
 [Gaussian Splatting: 3D Reconstruction and Novel View Synthesis, a Review 논문 링크](https://ieeexplore.ieee.org/abstract/document/10545567)
