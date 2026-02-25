@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Sebin Lee</title>
+
+    <!-- Usual metadata. -->
+    <meta charset="UTF-8" />
+    <link href="./assets/sunset_small.jpeg" rel="shortcut icon" type="image/x-icon" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1"
+    />
+
+    <!-- Webfont. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles. -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/modern-normalize@3.0.1/modern-normalize.min.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+  </head>
+  <body>
+    <div style="height: 4em"></div>
+    <section
+      style="
+        display: flex;
+        align-items: start;
+        gap: 2em 1.5em;
+        flex-wrap: wrap-reverse;
+      "
+    >
+      <div style="flex-grow: 1; flex-basis: 20em">
+        <h1>Sebin Lee</h1>
+        <p style="margin-top: -0.5em; font-size: 0.9em; opacity: 0.8;">(Korean) 이세빈</p>
+        <p>I recently received my B.A. from the Global School of Media at Soongsil University.
+          During my undergraduate studies, I worked as a research intern at Reality Lab, Soongsil University, 
+          under the supervision of Prof. <a href="https://scholar.google.com/citations?user=B1Yuz3gAAAAJ&hl=ko&oi=ao">Heewon Kim</a>, 
+          where I published my first paper at WACV 2026 and developed a strong interest in robotics and Physical AI.</p>
+          
+          <p>I am currently a research intern at the 3D Vision & Robotics Lab (UNIST), advised by Prof. Kyungdon Joo, 
+            focusing on robot manipulation.</p>
+            <p>My research interests include Robot Manipulation, 3D Vision, and Embodied AI.</p>
+        
+        <p>
+          <a href="mailto:jnf0219@naver.com">Email</a>
+          &nbsp;/&nbsp;
+          <!-- <a href="https://scholar.google.com/citations?hl=en&user=ODr5lMgAAAAJ">Google Scholar</a>
+          &nbsp;/&nbsp; -->
+          <a href="https://github.com/sebinyday/">Github</a>
+          &nbsp;/&nbsp;
+          <a href="https://www.linkedin.com/in/sebin-lee-75968732b/">LinkedIn</a>
+          <!-- &nbsp;/&nbsp;
+          <a href="https://docs.google.com/document/d/12cRPLdpT7ES6IHeIp3JFJsJS0lUze8yHy-9sTsCD8AU">Resume</a> -->
+        </p>
+      </div>
+      <div style="display: block">
+        <img
+          src="./assets/img/profile.jpg"
+          alt="A photo of the author"
+          style="
+            width: 12em;
+            height: auto;
+            
+            object-fit: cover;
+            border-radius: 5%;
+          "
+        />
+      </div>
+    </section>
+    <section>
+      <h2>Research</h2>
+      <!-- <p>⚙️ Under construction ⚙️</p> -->
+      <!-- Paper list will be dynamically generated here -->
+      <ul id="paper-list" style="margin-top: 1em" data-show-recent="false"></ul>
+      <!-- [ <a href="#" onclick="toggleRecentPapers(event)">Show older papers</a> ] -->
+
+      <!-- Generate paper list. -->
+      <script>
+        const papers = [
+          {
+            previewSrc: "./assets/img/deglass.png",
+            title: "HiGlassRM: Learning to Remove High-prescription Glasses via Synthetic Dataset Generation",
+            authors: [
+              "Sebin Lee",
+              "Heewon Kim",
+            ],
+            conference: "WACV 2026",
+            links: [
+              { text: "Website", url: "https://higlassrm.github.io/" },
+              { text: "Paper", url: "https://higlassrm.github.io/" },
+            ],
+            summary:
+              " ",
+            highlighted: false,
+            recent: true,
+            new: true,
+          },
+          
+        ];
+        function generatePaperList() {
+          const paperList = document.getElementById("paper-list");
+          papers.forEach((paper) => {
+            const li = document.createElement("li");
+            if (paper.highlighted) {
+              li.classList.add("paper-highlighted");
+            }
+            if (paper.recent) {
+              li.classList.add("paper-recent");
+            }
+            li.classList.add("paper");
+            li.innerHTML = `
+              ${
+                paper.previewSrc.endsWith(".mp4")
+                  ? `<video class="paper-visual" src="${paper.previewSrc}" loop muted autoplay playsinline></video>`
+                  : `<img class="paper-visual" src="${paper.previewSrc}" alt="${paper.title}">`
+              }
+              <div class="paper-textual">
+                <h3>
+                  ${paper.title}
+                  ${paper.new ? '<img src="./assets/new_animated.gif" alt="Blinking icon that says \'new\'." />' : ""}
+                </h3>
+                <div style="height: 0.1em"></div>
+                ${paper.authors
+                  .map((author) => {
+                    const names = author.split(" ");
+                    const firstName = names.slice(0, -1).join("&nbsp;");
+                    const lastName = names[names.length - 1];
+                    const formattedName = `${firstName}&nbsp;${lastName}`;
+                    return author.startsWith("Sebin Lee")
+                      ? `<strong>${formattedName}</strong>`
+                      : formattedName;
+                  })
+                  .join(", ")}.
+                <span style="font-weight: 450">${paper.conference}.</span>
+                <div style="height: 0.375em"></div>
+                ${paper.links
+                  .map((link) => `<a href="${link.url}">${link.text}</a>`)
+                  .join(" / ")}
+                <div style="height: 0.375em"></div>
+                <em style="opacity: 0.625">${paper.summary}</em>
+              </div>
+            `;
+            paperList.appendChild(li);
+          });
+        }
+
+        document.addEventListener("DOMContentLoaded", generatePaperList);
+
+        function toggleRecentPapers(event) {
+          event.preventDefault();
+          const paperList = document.getElementById("paper-list");
+          const showRecent = paperList.dataset.showRecent === "true";
+          paperList.dataset.showRecent = (!showRecent).toString();
+          event.target.textContent = showRecent
+            ? "Show older papers"
+            : "Hide older papers";
+        }
+      </script>
+    </section>
+    <section>
+      <h2>Awards</h2>
+      <!-- Award 1 -->
+      <div style="display: flex; align-items: flex-start; gap: 1.5em; margin-bottom: 2em; flex-wrap: wrap;">
+        <img src="./assets/img/toddler.png" alt="Governor's Award" style="width: 13em; height: auto; border-radius: 0.2em;">
+        <div style="flex: 1; min-width: 20em;">
+          <h3 style="margin: 0; font-size: 1em; font-weight: 500;">
+            Governor's Award, Gyeonggi Youth Gap Year Program
+            <br>
+            (경기청년 갭이어 프로그램 도지사상)
+          </h3>
+          <div style="margin-top: 0.3em;">
+            <strong style="font-weight: 500; text-decoration: underline;">Sebin&nbsp;Lee*</strong>, Dowon&nbsp;Kim*, Yeonji&nbsp;Kim*, Dahyun&nbsp;Ryu*.
+            <!-- <br>
+            <span style="font-weight: 400;">Korea Productivity Center, Gyeonggi Future Generation Foundation.</span> -->
+          </div>
+          <div style="margin-top: 0.5em;">
+            <span style="font-weight: 350; opacity: 0.8;">Aug 2025 – Dec 2025 · Conducted advanced manipulation research using the Toddlerbot platform. Recognized as a top 20 team among 800+ participants for technical excellence and execution.
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <section>
+      <h2>Projects</h2>
+      <!-- Award 1 -->
+      <div style="display: flex; align-items: flex-start; gap: 1.5em; margin-bottom: 2em; flex-wrap: wrap;">
+        <img src="./assets/img/RRR.png" alt="Governor's Award" style="width: 13em; height: auto; border-radius: 0.2em;">
+        <div style="flex: 1; min-width: 20em;">
+          <h3 style="margin: 0; font-size: 1em; font-weight: 500;">
+            Custom Mobile Manipulator
+            <!-- <img src="./assets/new_animated.gif" alt="new">  -->
+          </h3>
+          <div style="margin-top: 0.3em;">
+            Juhyeong&nbsp;Lee*,<strong style="font-weight: 500; text-decoration: underline;">Sebin&nbsp;Lee*</strong>, Dowon&nbsp;Kim*.
+            <span style="font-weight: 350; opacity: 0.8;">(Supervised by Prof. Heewon Kim)</span>
+          </div>
+          <div style="margin-top: 0.5em;">
+            <span style="font-weight: 350; opacity: 0.8;">Jul 2025 – Dec 2025 · Developed a mobile manipulator at Reality Lab, Soongsil University by extending the open-source Red Rabbit Robotics RX1 platform with a custom vertical lift and mobile base.</span>
+            
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <!-- --------------------------------------- -->
+    <section>
+      <h2>Experience</h2>
+      <div style="display: flex; align-items: flex-start; gap: 1.5em; margin-bottom: 2em; flex-wrap: wrap;">
+        <img src="./assets/img/3drvi.png" alt="Realitylab" style="width: 8em; height: auto; border-radius: 0.2em;">
+        <div style="flex: 1; min-width: 20em;">
+          <h3 style="margin: 0; font-size: 1em; font-weight: 500;">
+            <a href="https://unist.info/"> 3D Vision & Robotics Lab</a> (2026.01 ~)
+            <!-- <img src="./assets/new_animated.gif" alt="new">  -->
+          </h3>
+          <div style="margin-top: 0.3em;">
+            Research Intern
+            <span style="font-weight: 350; opacity: 0.8;">(Supervised by Prof. Kyungdon Joo)</span>
+          </div>
+          <div style="margin-top: 0.5em;">
+            <span style="font-weight: 350; opacity: 0.8;">Topics: Robot Manipulation</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: flex-start; gap: 1.5em; margin-bottom: 2em; flex-wrap: wrap;">
+        <img src="./assets/img/Realitylab.png" alt="Realitylab" style="width: 8em; height: auto; border-radius: 0.2em;">
+        <div style="flex: 1; min-width: 20em;">
+          <h3 style="margin: 0; font-size: 1em; font-weight: 500;">
+            <a href="https://reality.ssu.ac.kr/">Reality Lab, Soongsil University</a> (2023.06 ~)
+            <!-- <img src="./assets/new_animated.gif" alt="new">  -->
+          </h3>
+          <div style="margin-top: 0.3em;">
+            Undergraduate Research Intern
+            <span style="font-weight: 350; opacity: 0.8;">(Supervised by Prof. Heewon Kim)</span>
+          </div>
+          <div style="margin-top: 0.5em;">
+            <span style="font-weight: 350; opacity: 0.8;">Topics: Embodied AI, Computer Vision, Image Restoration</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- --------------------------------------- -->
+    <section>
+      <h2>Education</h2>
+      <ul style="margin: 0; padding-left: 1.5em;">
+        <li>Bachelor in Global School of Media, Soongsil University (2022.03~2026.02)</li>
+      </ul>
+    </section>
+    
+
+    <div style="height: 1em"></div>
+    <section>
+      <em style="color: #b5b5b5">
+        Website design borrows from
+        <a href="https://jonbarron.info/">Jon Barron</a>.
+      </em>
+    </section>
+    <div style="height: 2em"></div>
+  </body>
+</html>
